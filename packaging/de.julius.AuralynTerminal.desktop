@@ -1,0 +1,22 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Auralyn Terminal
+GenericName=Terminal Emulator
+GenericName[de]=Terminal
+Comment=Real Bash terminal with Smart Search, compact suggestions and transparency
+Comment[de]=Echtes Bash-Terminal mit Smart Search, kompakten Vorschlägen und Transparenz
+Exec=auralyn-terminal
+TryExec=auralyn-terminal
+Icon=auralyn-terminal
+Terminal=false
+Categories=System;TerminalEmulator;
+Keywords=terminal;bash;shell;sudo;auralyn;run;kill;search;ollama;
+StartupNotify=true
+StartupWMClass=auralyn-terminal
+Actions=NewWindow;
+
+[Desktop Action NewWindow]
+Name=New Window
+Name[de]=Neues Fenster
+Exec=auralyn-terminal

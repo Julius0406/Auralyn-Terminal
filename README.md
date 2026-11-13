@@ -1,152 +1,123 @@
- 
+<div align="center">
+
 # ✨ Auralyn Terminal
 
-**A modern, intelligent terminal for Ubuntu — Made by Julius.**
+### A smarter terminal. Your Linux. Your rules.
 
+**A modern GTK/VTE terminal for Ubuntu 26.04 — made by Julius.**
+
+[![Version](https://img.shields.io/badge/Version-v1.0.0%20Stable-17a398?style=for-the-badge)](https://github.com/Julius0406/Auralyn-Terminal/releases)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-26.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![Version](https://img.shields.io/badge/Version-1.4.3_Beta_11-6366F1?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![AI](https://img.shields.io/badge/AI-Ollama-14B8A6?style=for-the-badge)
+[![License](https://img.shields.io/badge/License-MIT-6874c9?style=for-the-badge)](LICENSE)
+
+**[📦 Releases](https://github.com/Julius0406/Auralyn-Terminal/releases) · [📖 Documentation](docs/AURALYN-HILFE.md) · [🐛 Report a bug](https://github.com/Julius0406/Auralyn-Terminal/issues)**
+
+</div>
 
 ---
 
-### 🚀 The next generation of your Linux terminal
+## 🚀 What is Auralyn Terminal?
 
-**Auralyn Terminal** combines the power of a real Linux shell with a modern interface, intelligent command suggestions, customizable transparency, and AI-assisted command discovery.
+**Auralyn Terminal** is a real Linux Bash terminal with a transparent interface and useful extras: compact live command suggestions, quick explanations, optional AI-powered command research, and a one-click system updater.
 
-Built for developers, Linux enthusiasts, and everyone who wants a smarter terminal experience.
+**v1.0.0 Stable** brings together the existing Auralyn features in one release. The stable release changes branding and packaging, not terminal functionality.
 
 ## ✨ Features
 
-### 🎨 Modern interface
+| Feature | Description |
+| :--- | :--- |
+| 🪟 **Modern interface** | Dark, transparent UI, tabs, customizable font, and 0–100% background transparency (75% by default). |
+| ⚡ **Live autocomplete** | Up to 3 visible suggestions beside your prompt. Navigate with **Tab** and press **H** for a short explanation. |
+| 💻 **Real Bash and sudo** | True GTK/VTE terminal supporting normal Linux permissions, interactive commands, Bash completions, and installed third-party CLI tools. |
+| 🔎 **Smart Search** | Describe what you want to do in everyday language, view explanations, and copy command suggestions. |
+| 🧠 **Optional local AI** | Connect Ollama (for example, Qwen3). Optional web research can help identify commands and check installed tools. |
+| ↻ **One-click updates** | APT and Flatpak updates in a separate tab, with optional keyring-based password handling. |
+| ▶️ **Run and kill** | Launch applications by name or force-stop your own processes. |
+| 🧹 **Repeated `clear` fix** | Keep the small suggestion popup beside the prompt, even after clearing the screen many times. |
+| 🎭 **Faceman commands** | `face`, `gondelface`, `luiswiththegondelface` repeatedly print `Faceman is here` until **Ctrl+C**. |
 
-- Sleek dark design with a transparent background
-- Adjustable transparency from **0% to 100%**
-- **75% transparency** by default
-- Multiple terminal tabs
-- Customizable terminal font
-- Smooth, compact interface
+### ⌨️ Keyboard shortcuts
 
-### ⚡ Smart Autocomplete
+| Shortcut | Action |
+| :--- | :--- |
+| **Tab / Shift+Tab** | Browse suggestions |
+| **H** | Show help for a selected command |
+| **Ctrl+Shift+A** | Select all terminal text |
+| **Ctrl+Shift+C** | Copy selected text |
+| **Ctrl+Shift+V** | Paste, including multiple lines without the Auralyn confirmation popup |
+| **Ctrl+A** | Jump to the start of the current Bash input line |
+| **Ctrl+C** | Interrupt a running command |
+| **Ctrl+Shift+F** | Open Smart Search |
 
-Get intelligent command suggestions while typing.
+> ⚠️ Multi-line pastes can run commands immediately, depending on the program receiving the text. Review copied commands first.
 
-- Up to three visible suggestions
-- Navigate suggestions using Tab
-- Press H to view command explanations
-- Supports Bash commands and compatible third-party completions
-- Detects installed command-line tools
+## 📦 Install on Ubuntu 26.04
 
-### 🧠 AI-Powered Smart Search
+1. Download **`auralyn-terminal_1.0.0_all.deb`** from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases) once v1.0.0 has been published.
+2. Save it to your **Downloads** folder.
+3. In your usual Ubuntu terminal, run:
 
-Ask questions in natural language instead of memorizing Linux commands.
+```bash
+sudo apt install ~/Downloads/auralyn-terminal_1.0.0_all.deb
+```
 
-**Example:**
+Launch from the application menu or run:
 
-Question: *How do I check my NVIDIA driver?*
+```bash
+auralyn-terminal
+```
 
-Suggested command: `nvidia-smi`
+**Do not launch the whole application with `sudo`.** Run administrative commands inside Auralyn only when needed. Existing Auralyn settings are preserved when upgrading. The internal Debian package version is `1:1.0.0` to correctly upgrade previous installed versions.
 
-Smart Search can:
+## 🤖 Optional Ollama AI
 
-- Understand Linux-related questions
-- Research commands using optional web access
-- Check whether suggested programs are installed
-- Read available local command documentation
-- Explain commands in simple language
-- Suggest installation steps for missing tools
+Auralyn's built-in help works without AI. To enable local model-assisted Smart Search:
 
-Powered by an optional **local Ollama AI model**, such as Qwen3.
+1. Install [Ollama](https://ollama.com) separately.
+2. Download an example model:
 
-AI-generated commands are provided for review and copying, rather than blindly executed.
+   ```bash
+   ollama pull qwen3:4b
+   ```
 
-### ▶️ Run & Kill
+3. In Auralyn, open **🔎 Smart Search → Lokale KI…**.
+4. Select your installed model and enable local AI.
+5. **Optional:** enable **Web-Recherche erlauben** to allow online searches and documentation lookup.
 
-Auralyn includes additional commands for program management.
+The language model runs locally; **optional web research sends searches to external services**. AI-generated commands are suggestions, not automatically executed. Always check commands for correctness.
 
-| Command | Description |
-|---|---|
-| `run firefox` | Launch Firefox |
-| `kill firefox` | Force-stop a matching user process |
-| `run --foreground htop` | Launch an interactive terminal application |
+## 🔄 System update button
 
-**Warning:** Force-stopping processes may result in unsaved data loss.
+The **↻** button runs the following steps in a separate terminal tab:
 
-### 🔐 Real Linux Terminal
+```bash
+sudo apt update
+sudo apt full-upgrade -y
+flatpak update --assumeyes
+```
 
-Auralyn isn't a simulated terminal.
+Normal package confirmations are accepted by default (you can turn this off in the updater settings). **`full-upgrade` can remove packages.** Special package configuration or permissions dialogs might still require your input. You can optionally save the sudo password in the desktop keyring (Secret Service); otherwise normal sudo prompts are used. The updater attempts to clear cached sudo credentials after it finishes or handles an error, but interruptions such as power loss can prevent cleanup. There is no automatic reboot.
 
-It uses a real Bash shell with support for:
+## 🛡️ Security and development status
 
-- `sudo` and normal Linux permissions
-- APT package management
-- Git, SSH, Python, and development tools
-- Interactive terminal applications
-- Third-party command-line programs
+- Uses normal Linux user and sudo permissions — not a permanent root shell.
+- Smart Search and autocomplete do **not** automatically execute suggested commands.
+- Local AI and web research are opt-in features.
+- Force-stopping an app can cause data loss from unsaved work.
+- The **stable** label describes the release channel, not a guarantee of zero bugs.
+- **693 automated tests passed** for the v1.0.0 source. **21 GTK/VTE graphical tests were skipped** due to unavailable dependencies in the build environment; full Ubuntu GUI verification remains recommended.
 
-## 📦 Installation
+## 👨‍💻 Project
 
-**Supported platform:** Ubuntu 26.04
+**Created by Julius** · Python · GTK 3 · VTE · Bash · optional Ollama
 
-**Step 1 — Download**
+**Development support:** Auralyn Terminal was developed partly with the help of **ChatGPT** and **OpenAI Codex**, using **GPT-6 Astra** with **Ultra Thinking**.
 
-Download the latest Ubuntu `.deb` package from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases).
+[📜 Changelog](CHANGELOG.md) · [🧪 Stable test report](TESTBERICHT-STABLE.md) · [💬 Issues](https://github.com/Julius0406/Auralyn-Terminal/issues) · [📄 MIT License](LICENSE)
 
-**Step 2 — Install**
+<div align="center">
 
-For version 1.4.3 Beta 11, run:
+**⭐ Like Auralyn Terminal? Give the repository a star!**
 
-`sudo apt install ~/Downloads/auralyn-terminal_1.4.3-beta11_all.deb`
-
-**Step 3 — Launch**
-
-Open Auralyn Terminal from your application menu or run:
-
-`auralyn-terminal`
-
-## 🤖 Optional Local AI
-
-Auralyn supports local AI through Ollama.
-
-1. Install [Ollama](https://ollama.com).
-2. Download a compatible model, for example `ollama pull qwen3:4b`.
-3. Open Auralyn Terminal.
-4. Click **Smart Search → Local AI**.
-5. Select your model and enable local AI.
-
-The model runs locally. Optional web research uses external search and documentation services and requires network access.
-
-## 🛡️ Security & Privacy
-
-- Normal Linux user permissions are respected.
-- Administrator commands use standard `sudo` authentication.
-- Search results do not automatically execute commands.
-- AI-generated commands are not automatically trusted.
-- Optional web research can be disabled.
-- Auralyn does not require a cloud AI subscription.
-
-Always inspect commands before running them, especially commands that modify system files or install software.
-
-## 🧪 Development Status
-
-**Current release: v1.4.3 Beta 11**
-
-Auralyn Terminal is actively developed. Features may change, and some functions are still experimental.
-
-Automated tests cover command suggestions, command-search logic, and terminal functionality. Full compatibility across every Linux desktop configuration is not yet guaranteed.
-
-Found a bug or have a feature idea? Open a [GitHub Issue](https://github.com/Julius0406/Auralyn-Terminal/issues).
-
-## 👨‍💻 Developer
-
-**Created by Julius**
-
-Developed with Python, GTK, VTE, Bash, and optional Ollama integration.
-
-Made with ❤️ for Linux.
-
----
-
-**⭐ If you like Auralyn Terminal, consider giving the repository a star!**
-
-[Releases](https://github.com/Julius0406/Auralyn-Terminal/releases) · [Report a bug](https://github.com/Julius0406/Auralyn-Terminal/issues) · [Source Code](https://github.com/Julius0406/Auralyn-Terminal)
+</div>
