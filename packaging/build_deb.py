@@ -15,8 +15,8 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
-FILE_VERSION = '1.0.0'
-DEB_VERSION = '1:1.0.0'
+FILE_VERSION = '1.0.1'
+DEB_VERSION = '1:1.0.1'
 
 
 def copy_file(source: Path, target: Path, mode=0o644):

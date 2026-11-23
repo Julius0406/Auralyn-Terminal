@@ -6,7 +6,7 @@
 
 **A modern GTK/VTE terminal for Ubuntu 26.04 — made by Julius.**
 
-[![Version](https://img.shields.io/badge/Version-v1.0.0%20Stable-17a398?style=for-the-badge)](https://github.com/Julius0406/Auralyn-Terminal/releases)
+[![Version](https://img.shields.io/badge/Version-v1.0.1%20Stable-17a398?style=for-the-badge)](https://github.com/Julius0406/Auralyn-Terminal/releases)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-26.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3-3776AB?style=for-the-badge&logo=python&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-6874c9?style=for-the-badge)](LICENSE)
@@ -21,9 +21,14 @@
 
 **Auralyn Terminal** is a real Linux Bash terminal with a transparent interface and useful extras: compact live command suggestions, quick explanations, optional AI-powered command research, and a one-click system updater.
 
-**v1.0.0 Stable** brings together the existing Auralyn features in one release. The stable release changes branding and packaging, not terminal functionality.
+**v1.0.1 Stable** keeps all existing terminal features and adds GNOME-native window controls that follow the current desktop layout and GTK theme.
 
 ## ✨ Features
+
+### 🍎 Native GNOME / WhiteSur window controls
+
+The **minimize, maximize and close** buttons automatically follow the system’s **left/right button layout** and use the **active GTK 3 theme** (including WhiteSur-Dark). Change them in GNOME Tweaks, the GNOME desktop settings, or a compatible extension. Auralyn updates automatically; there is no competing application-specific left/right setting. The macOS traffic-light appearance requires a GTK theme that provides it; a GNOME Shell theme alone may not style GTK windows.
+
 
 | Feature | Description |
 | :--- | :--- |
@@ -54,12 +59,12 @@
 
 ## 📦 Install on Ubuntu 26.04
 
-1. Download **`auralyn-terminal_1.0.0_all.deb`** from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases) once v1.0.0 has been published.
+1. Download **`auralyn-terminal_1.0.1_all.deb`** from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases) when v1.0.1 is available.
 2. Save it to your **Downloads** folder.
 3. In your usual Ubuntu terminal, run:
 
 ```bash
-sudo apt install ~/Downloads/auralyn-terminal_1.0.0_all.deb
+sudo apt install ~/Downloads/auralyn-terminal_1.0.1_all.deb
 ```
 
 Launch from the application menu or run:
@@ -68,7 +73,7 @@ Launch from the application menu or run:
 auralyn-terminal
 ```
 
-**Do not launch the whole application with `sudo`.** Run administrative commands inside Auralyn only when needed. Existing Auralyn settings are preserved when upgrading. The internal Debian package version is `1:1.0.0` to correctly upgrade previous installed versions.
+**Do not launch the whole application with `sudo`.** Run administrative commands inside Auralyn only when needed. Existing Auralyn settings are preserved when upgrading. The internal Debian package version is `1:1.0.1` to correctly upgrade previous installed versions.
 
 ## 🤖 Optional Ollama AI
 

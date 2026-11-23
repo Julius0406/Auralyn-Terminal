@@ -1,4 +1,4 @@
-# Auralyn-Programmhilfe v1.0.0 Stable
+# Auralyn-Programmhilfe v1.0.1 Stable
 
 ## Faceman-Kommandos
 
@@ -7,6 +7,10 @@
 Ausgabe wird leicht gebremst, damit das Terminal nicht einfriert. Die Befehle
 erscheinen als Auralyn-Bash-Funktionen in den Live-Vorschlägen (H für Hilfe).
 Sie werden nicht in dein normales Ubuntu-Terminal oder `~/.bashrc` installiert.
+
+## Native Fensterknöpfe (GNOME / WhiteSur)
+
+Schließen, Minimieren und Maximieren sind native GTK-Fensterknöpfe. GNOME bestimmt automatisch, ob sie links oder rechts stehen. Der aktive GTK-3-Theme (z. B. WhiteSur-Dark) liefert ihre Form und Farben. Ändere die Position in GNOME Optimierungen (Fenstertitelleisten), mit `gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'` für links oder `gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'` für rechts. Änderungen gelten ohne Neustart von Auralyn. Auralyn stellt keine separate Positionseinstellung bereit und verändert die GNOME-Konfiguration nicht selbst.
 
 ## Systemupdate-Button
 
@@ -182,7 +186,7 @@ Auralyn verwendet den normalen Verlauf deiner Bash. Pfeil hoch/ab blättert an d
 
 ## Auralyn-Version anzeigen
 
-Diese Hilfe gehört zu Auralyn Terminal v1.0.0 Stable. Das Info-Symbol oben öffnet „Über Auralyn“ mit der installierten Version. Im Terminal zeigt auralyn-terminal --version ebenfalls die Version.
+Diese Hilfe gehört zu Auralyn Terminal v1.0.1 Stable. Das Info-Symbol oben öffnet „Über Auralyn“ mit der installierten Version. Im Terminal zeigt auralyn-terminal --version ebenfalls die Version.
 
 ## Auralyn selbst aktualisieren
 

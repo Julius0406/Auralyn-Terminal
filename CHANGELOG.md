@@ -1,3 +1,14 @@
+# Auralyn Terminal v1.0.1 Stable — Changelog
+
+## v1.0.1 — GNOME-native title buttons
+
+- Use native GTK 3 minimize, maximize and close button appearance from the active desktop theme, including WhiteSur-Dark.
+- Live sync with GNOME window button placement (left/right) through the desktop button-layout preference.
+- Preserve existing header bar actions, transparent background, tabs, Bash, Smart Search and updater.
+- No user-specific GNOME/extension settings are changed; no GitHub release published yet.
+
+---
+
 # Auralyn Terminal v1.0.0 Stable — Changelog
 
 Released: 12 November 2026

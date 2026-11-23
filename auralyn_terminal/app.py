@@ -23,6 +23,7 @@ from .command_help import HelpText, HelpWorker
 from .protocol import SessionIPC
 from .settings import DEFAULTS, Settings
 from .terminal_state import is_readline_foreground, suggestion_viewport_row
+from .window_chrome import bind_system_window_controls
 from .smart_catalog import get_action
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -775,7 +776,9 @@ class MainWindow(Gtk.ApplicationWindow):
         self.connect("draw", self._clear_background)
 
         header = Gtk.HeaderBar()
-        header.set_show_close_button(True)
+        # GTK owns the actual buttons: WhiteSur and other GTK themes render them.
+        # GNOME preferences control left/right and are monitored automatically.
+        self._window_chrome_preferences = bind_system_window_controls(header, Gio)
         header.set_title("Auralyn Terminal")
         header.set_subtitle("BASH  ·  LOKAL  ·  BY JULIUS")
         header.get_style_context().add_class("auralyn-header")
@@ -939,8 +942,10 @@ class MainWindow(Gtk.ApplicationWindow):
         headerbar.auralyn-header {{ background-image: none; background-color: rgba(16,22,34,{alpha:.3f}); border-bottom: 1px solid rgba(151,186,219,0.17); box-shadow: none; }}
         .auralyn-header .title {{ font-weight: 700; }}
         .auralyn-header .subtitle {{ color: #9cb9c8; font-size: 9px; }}
-        .auralyn-window button {{ color: #e7eefb; background-image: none; background-color: transparent; border-color: transparent; box-shadow: none; }}
-        .auralyn-window button:hover {{ background-color: rgba(116,190,199,0.16); }}
+        /* Keep native GTK titlebutton rendering untouched so WhiteSur,
+           Yaru, Adwaita and GNOME theme extensions style window controls. */
+        .auralyn-window button:not(.titlebutton) {{ color: #e7eefb; background-image: none; background-color: transparent; border-color: transparent; box-shadow: none; }}
+        .auralyn-window button:not(.titlebutton):hover {{ background-color: rgba(116,190,199,0.16); }}
         notebook.terminal-notebook, notebook.terminal-notebook > stack {{ background-color: transparent; border: none; }}
         notebook.terminal-notebook > header {{ background-image: none; background-color: rgba(16,22,34,{alpha:.3f}); border: none; padding: 0 9px; }}
         notebook.terminal-notebook > header tabs {{ background-color: transparent; }}

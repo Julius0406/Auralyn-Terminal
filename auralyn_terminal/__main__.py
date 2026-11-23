@@ -3,7 +3,7 @@ import sys
 from . import __version__
 
 if "--version" in sys.argv[1:]:
-    print(f"Auralyn Terminal {__version__}")
+    print(f"Auralyn Terminal v{__version__} Stable")
     raise SystemExit(0)
 
 try:
