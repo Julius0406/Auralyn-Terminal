@@ -7,4 +7,4 @@
 
 Quality notes: three new unit tests and a native GTK/WhiteSur window test passed. CSS parsed at three transparency values; the package installed and upgraded successfully. The full legacy test suite was not green on this live desktop: repeated Gtk.Application registration collided on D-Bus and two environment-dependent tests failed. No claim is made that full regression has passed.
 
-Pending explicit user OK for GitHub publication.
+Published after explicit user approval.
