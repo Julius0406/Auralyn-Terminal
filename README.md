@@ -52,7 +52,6 @@ The **minimize, maximize and close** buttons automatically follow the system’s
 | ↻ **One-click updates** | APT and Flatpak updates in a separate tab, with optional keyring-based password handling. |
 | 🔄 **Auto-update on login** | Optional automatic APT/Flatpak updates when signing into the Ubuntu desktop. Off by default. |
 | ▶️ **Run and kill** | Launch applications by name or force-stop your own processes. |
-| 🧹 **Repeated `clear` fix** | Keep the small suggestion popup beside the prompt, even after clearing the screen many times. |
 | 🎭 **Faceman commands** | `face`, `gondelface`, `luiswiththegondelface` repeatedly print `Faceman is here` until **Ctrl+C**. |
 
 ### ⌨️ Keyboard shortcuts
