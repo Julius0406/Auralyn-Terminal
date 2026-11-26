@@ -23,6 +23,18 @@
 
 **v1.1.0 Stable** adds optional system updates at desktop login and retains GNOME-native window controls and all existing terminal features.
 
+## 🆕 Latest Update — v1.1.0 Stable
+
+*Released November 26, 2026*
+
+- **Auto-update on login:** Auralyn can open automatically when you sign into Ubuntu and run APT and Flatpak updates.
+- **New settings switch:** Enable or disable login updates; off by default.
+- **Existing update preferences:** Reuses automatic confirmations and optional keyring authentication.
+
+[Full changelog](CHANGELOG.md) · [Latest release](https://github.com/Julius0406/Auralyn-Terminal/releases/latest)
+
+<!-- Update this section with the newest version, release date and highlights for every release. Keep the full version history in CHANGELOG.md. -->
+
 ## ✨ Features
 
 ### 🍎 Native GNOME / WhiteSur window controls
@@ -139,7 +151,7 @@ Normal package confirmations are accepted by default (you can turn this off in t
 
 **Created by Julius** · Python · GTK 3 · VTE · Bash · optional Ollama
 
-**Development support:** Auralyn Terminal was developed partly with the help of **ChatGPT** and **OpenAI Codex**, using **GPT-6 Astra** with **Ultra Thinking**.
+**Development support:** Auralyn Terminal was developed partly with the help of **ChatGPT** and **OpenAI Codex**, using **GPT-6.2 Astra** with **Ultra Thinking**.
 
 [📜 Changelog](CHANGELOG.md) · [🧪 Current test report](TESTBERICHT.md) · [💬 Issues](https://github.com/Julius0406/Auralyn-Terminal/issues) · [📄 MIT License](LICENSE)
 
