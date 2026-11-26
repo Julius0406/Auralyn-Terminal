@@ -6,7 +6,7 @@
 
 **A modern GTK/VTE terminal for Ubuntu 26.04 — made by Julius.**
 
-[![Version](https://img.shields.io/badge/Version-v1.0.1%20Stable-17a398?style=for-the-badge)](https://github.com/Julius0406/Auralyn-Terminal/releases)
+[![Version](https://img.shields.io/badge/Version-v1.1.0%20Stable-17a398?style=for-the-badge)](https://github.com/Julius0406/Auralyn-Terminal/releases)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-26.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3-3776AB?style=for-the-badge&logo=python&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-6874c9?style=for-the-badge)](LICENSE)
@@ -21,7 +21,7 @@
 
 **Auralyn Terminal** is a real Linux Bash terminal with a transparent interface and useful extras: compact live command suggestions, quick explanations, optional AI-powered command research, and a one-click system updater.
 
-**v1.0.1 Stable** keeps all existing terminal features and adds GNOME-native window controls that follow the current desktop layout and GTK theme.
+**v1.1.0 Stable** adds optional system updates at desktop login and retains GNOME-native window controls and all existing terminal features.
 
 ## ✨ Features
 
@@ -38,6 +38,7 @@ The **minimize, maximize and close** buttons automatically follow the system’s
 | 🔎 **Smart Search** | Describe what you want to do in everyday language, view explanations, and copy command suggestions. |
 | 🧠 **Optional local AI** | Connect Ollama (for example, Qwen3). Optional web research can help identify commands and check installed tools. |
 | ↻ **One-click updates** | APT and Flatpak updates in a separate tab, with optional keyring-based password handling. |
+| 🔄 **Auto-update on login** | Optional automatic APT/Flatpak updates when signing into the Ubuntu desktop. Off by default. |
 | ▶️ **Run and kill** | Launch applications by name or force-stop your own processes. |
 | 🧹 **Repeated `clear` fix** | Keep the small suggestion popup beside the prompt, even after clearing the screen many times. |
 | 🎭 **Faceman commands** | `face`, `gondelface`, `luiswiththegondelface` repeatedly print `Faceman is here` until **Ctrl+C**. |
@@ -59,13 +60,30 @@ The **minimize, maximize and close** buttons automatically follow the system’s
 
 ## 📦 Install on Ubuntu 26.04
 
-1. Download **`auralyn-terminal_1.0.1_all.deb`** from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases) when v1.0.1 is available.
+### Option 1 — Download the `.deb` installer
+
+1. Download **`auralyn-terminal_1.1.0_all.deb`** from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases/tag/v1.1.0).
 2. Save it to your **Downloads** folder.
 3. In your usual Ubuntu terminal, run:
 
 ```bash
-sudo apt install ~/Downloads/auralyn-terminal_1.0.1_all.deb
+sudo apt install ~/Downloads/auralyn-terminal_1.1.0_all.deb
 ```
+
+### Option 2 — Install from source using Git
+
+Clone the tagged stable release, build the Debian package locally and install it:
+
+```bash
+sudo apt install git python3 dpkg
+git clone --branch v1.1.0 --depth 1 https://github.com/Julius0406/Auralyn-Terminal.git
+cd Auralyn-Terminal
+bash INSTALLIEREN.sh
+```
+
+Git downloads the source code, not a prebuilt installer. The install script builds the `.deb` locally and uses APT to install it and its dependencies. No GitHub account is required for the public repository.
+
+### Launch Auralyn Terminal
 
 Launch from the application menu or run:
 
@@ -73,7 +91,7 @@ Launch from the application menu or run:
 auralyn-terminal
 ```
 
-**Do not launch the whole application with `sudo`.** Run administrative commands inside Auralyn only when needed. Existing Auralyn settings are preserved when upgrading. The internal Debian package version is `1:1.0.1` to correctly upgrade previous installed versions.
+**Do not launch the whole application with `sudo`.** Run administrative commands inside Auralyn only when needed. Existing Auralyn settings are preserved when upgrading. The internal Debian package version is `1:1.1.0` to correctly upgrade previous installed versions.
 
 ## 🤖 Optional Ollama AI
 
@@ -91,6 +109,10 @@ Auralyn's built-in help works without AI. To enable local model-assisted Smart S
 5. **Optional:** enable **Web-Recherche erlauben** to allow online searches and documentation lookup.
 
 The language model runs locally; **optional web research sends searches to external services**. AI-generated commands are suggestions, not automatically executed. Always check commands for correctness.
+
+## 🔄 Auto-update on login
+
+Enable **Settings → Auto-Update beim Login** to open Auralyn at the next Ubuntu desktop login and run the existing APT/Flatpak workflow in a new update tab. Disabled by default. Normal app launches never start updates automatically. The per-user XDG autostart entry is removed when disabled. The same package-confirmation and optional keyring settings apply. Package removal and authentication/configuration prompts remain possible. No automatic reboot.
 
 ## 🔄 System update button
 
@@ -111,7 +133,7 @@ Normal package confirmations are accepted by default (you can turn this off in t
 - Local AI and web research are opt-in features.
 - Force-stopping an app can cause data loss from unsaved work.
 - The **stable** label describes the release channel, not a guarantee of zero bugs.
-- **693 automated tests passed** for the v1.0.0 source. **21 GTK/VTE graphical tests were skipped** due to unavailable dependencies in the build environment; full Ubuntu GUI verification remains recommended.
+- **v1.1.0:** 698 of 721 automated tests passed, 21 graphical tests were skipped in the headless run, and 2 previously observed tests failed. The new login-update tests and an isolated GTK test passed. The project owner confirmed the feature works on their Ubuntu desktop.
 
 ## 👨‍💻 Project
 
@@ -119,7 +141,7 @@ Normal package confirmations are accepted by default (you can turn this off in t
 
 **Development support:** Auralyn Terminal was developed partly with the help of **ChatGPT** and **OpenAI Codex**, using **GPT-6 Astra** with **Ultra Thinking**.
 
-[📜 Changelog](CHANGELOG.md) · [🧪 Stable test report](TESTBERICHT-STABLE.md) · [💬 Issues](https://github.com/Julius0406/Auralyn-Terminal/issues) · [📄 MIT License](LICENSE)
+[📜 Changelog](CHANGELOG.md) · [🧪 Current test report](TESTBERICHT.md) · [💬 Issues](https://github.com/Julius0406/Auralyn-Terminal/issues) · [📄 MIT License](LICENSE)
 
 <div align="center">
 

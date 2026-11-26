@@ -1,3 +1,13 @@
+# Auralyn Terminal v1.1.0 Stable — Changelog
+
+## v1.1.0 — Auto-update on login
+
+- Optional per-user desktop autostart, disabled by default.
+- Launch the existing APT/Flatpak update workflow in a new tab at login.
+- Preserve the existing confirmation, keyring and sudo-cleanup logic.
+
+---
+
 # Auralyn Terminal v1.0.1 Stable — Changelog
 
 ## v1.0.1 — GNOME-native title buttons

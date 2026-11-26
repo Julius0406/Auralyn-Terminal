@@ -1,4 +1,4 @@
-# Auralyn-Programmhilfe v1.0.1 Stable
+# Auralyn-Programmhilfe v1.1.0 Stable
 
 ## Faceman-Kommandos
 
@@ -12,17 +12,21 @@ Sie werden nicht in dein normales Ubuntu-Terminal oder `~/.bashrc` installiert.
 
 Schließen, Minimieren und Maximieren sind native GTK-Fensterknöpfe. GNOME bestimmt automatisch, ob sie links oder rechts stehen. Der aktive GTK-3-Theme (z. B. WhiteSur-Dark) liefert ihre Form und Farben. Ändere die Position in GNOME Optimierungen (Fenstertitelleisten), mit `gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'` für links oder `gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'` für rechts. Änderungen gelten ohne Neustart von Auralyn. Auralyn stellt keine separate Positionseinstellung bereit und verändert die GNOME-Konfiguration nicht selbst.
 
+## Auto-Update beim Login
+
+Zahnrad → Auto-Update beim Login. Standard: aus. Aktiviert startet Auralyn beim nächsten Ubuntu-Login den bekannten APT-/Flatpak-Update-Tab. Normales Öffnen startet kein Update. Dieselben Optionen für Passwort und automatische Paketbestätigung gelten. full-upgrade kann Pakete entfernen; besondere Rückfragen bleiben möglich. Ausschalten entfernt den Autostart für zukünftige Logins; laufende Updates bleiben unberührt.
+
 ## Systemupdate-Button
 
 Pfeilkreis links neben der Lupe → neuer Update-Tab: sudo apt update → sudo apt full-upgrade -y → flatpak update --assumeyes. Paketfragen werden standardmäßig automatisch bestätigt, auch mögliche Paketentfernungen durch full-upgrade. Abschalten: Zahnrad → Update-Button → Optionen & Passwort… → Paketfragen automatisch bestätigen. Konfigurations-/Berechtigungsfragen können bleiben. Bei Fehlern wird angehalten, fehlendes Flatpak übersprungen. sudo -K löscht am Schluss und bei behandelten Abbrüchen die sudo-Anmeldung. Danach normale Benutzer-Bash, keine Root-Shell.
 
 ## Paketfragen automatisch bestätigen
 
-Zahnrad → „Update-Button“ → „Optionen & Passwort…“ → „Paketfragen automatisch bestätigen“. Standard: eingeschaltet, auch nach einem Programmupdate. APT full-upgrade verwendet -y und flatpak update --assumeyes; Ja/Nein und Yes/No hängen dadurch nicht von der Sprache ab. Gilt nur für den nächsten Button-Start, nicht für laufende Updates, eigene Befehle oder Smart Search. Ausgeschaltet wird wieder gefragt. full-upgrade kann auch Pakete entfernen. Konfigurationsfragen und separate Berechtigungsabfragen bleiben möglich; kein automatischer Neustart. Das sudo-Passwort und das Löschen der sudo-Anmeldung bleiben getrennt davon.
+Zahnrad → „Update-Button“ → „Optionen & Passwort…“ → „Paketfragen automatisch bestätigen“. Standard: eingeschaltet, auch nach einem Programmupdate. APT full-upgrade verwendet -y und flatpak update --assumeyes; Ja/Nein und Yes/No hängen dadurch nicht von der Sprache ab. Gilt für den nächsten Update-Start per Button oder Login, nicht für laufende Updates, eigene Befehle oder Smart Search. Ausgeschaltet wird wieder gefragt. full-upgrade kann auch Pakete entfernen. Konfigurationsfragen und separate Berechtigungsabfragen bleiben möglich; kein automatischer Neustart. Das sudo-Passwort und das Löschen der sudo-Anmeldung bleiben getrennt davon.
 
-## Passwort nur für den Update-Button
+## Passwort für den Update-Ablauf
 
-Zahnrad → „Update-Button“ → „Optionen & Passwort…“. Gib dein Linux-/sudo-Passwort ein und wähle „Im Schlüsselbund speichern“. Der Schalter „Passwort für Update-Button verwenden“ aktiviert die Übernahme nur für dessen zwei sudo-Aufrufe. Eigene Befehle und die KI erhalten es nicht. Nach dem Ablauf löscht sudo -K die sudo-Zwischenspeicher. „Gespeichertes Passwort löschen“ entfernt den Eintrag. Kein Klartext in settings.json, keine NOPASSWD-Regel. Ein gesperrter Schlüsselbund kann nachfragen; nur im vertrauenswürdigen Benutzerkonto verwenden.
+Zahnrad → „Update-Button“ → „Optionen & Passwort…“. Gib dein Linux-/sudo-Passwort ein und wähle „Im Schlüsselbund speichern“. Der Schalter „Passwort für Update-Button verwenden“ aktiviert die Übernahme nur für die zwei sudo-Aufrufe des festen Update-Ablaufs (Button oder Login). Eigene Befehle und die KI erhalten es nicht. Nach dem Ablauf löscht sudo -K die sudo-Zwischenspeicher. „Gespeichertes Passwort löschen“ entfernt den Eintrag. Kein Klartext in settings.json, keine NOPASSWD-Regel. Ein gesperrter Schlüsselbund kann nachfragen; nur im vertrauenswürdigen Benutzerkonto verwenden.
 
 ## Web-Recherche einschalten
 
@@ -166,7 +170,7 @@ Auralyn startet deine echte Bash; sudo funktioniert dort mit den normalen Ubuntu
 
 ## Passwortabfrage im Terminal
 
-Bei sudo wird die Passworteingabe normalerweise nicht sichtbar angezeigt, auch nicht als Sternchen. Tippe dein Passwort und drücke Enter. Live-Vorschläge werden während solcher Programme nicht eingeblendet. Normale Terminaleingaben werden nicht als Update-Passwort gespeichert. Nur für den separaten Update-Button kannst du es ausdrücklich im Schlüsselbund hinterlegen: Zahnrad → Update-Button → Optionen & Passwort….
+Bei sudo wird die Passworteingabe normalerweise nicht sichtbar angezeigt, auch nicht als Sternchen. Tippe dein Passwort und drücke Enter. Live-Vorschläge werden während solcher Programme nicht eingeblendet. Normale Terminaleingaben werden nicht als Update-Passwort gespeichert. Nur für den festen Update-Ablauf (Button oder Login) kannst du es ausdrücklich im Schlüsselbund hinterlegen: Zahnrad → Update-Button → Optionen & Passwort….
 
 ## Bash, SSH und andere Shells
 
@@ -186,7 +190,7 @@ Auralyn verwendet den normalen Verlauf deiner Bash. Pfeil hoch/ab blättert an d
 
 ## Auralyn-Version anzeigen
 
-Diese Hilfe gehört zu Auralyn Terminal v1.0.1 Stable. Das Info-Symbol oben öffnet „Über Auralyn“ mit der installierten Version. Im Terminal zeigt auralyn-terminal --version ebenfalls die Version.
+Diese Hilfe gehört zu Auralyn Terminal v1.1.0 Stable. Das Info-Symbol oben öffnet „Über Auralyn“ mit der installierten Version. Im Terminal zeigt auralyn-terminal --version ebenfalls die Version.
 
 ## Auralyn selbst aktualisieren
 

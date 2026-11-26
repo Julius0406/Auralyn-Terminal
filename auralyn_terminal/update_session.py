@@ -41,7 +41,7 @@ def display_commands(assume_yes: bool = False) -> tuple[str, str, str]:
 def confirmation_notice(assume_yes: bool) -> str:
     """Announce the selected mode without impersonating a package-manager prompt."""
     if assume_yes:
-        return ('Automatisches Ja: EIN · nur dieser Update-Button.\n'
+        return ('Automatisches Ja: EIN · nur dieser Update-Ablauf.\n'
                 'APT (-y) und Flatpak (--assumeyes) bestätigen Paketfragen selbst, '
                 'unabhängig von Deutsch oder Englisch.\n'
                 'Achtung: full-upgrade kann dabei auch Pakete entfernen.\n'

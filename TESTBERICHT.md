@@ -1,11 +1,8 @@
-# Auralyn Terminal v1.0.0 Stable — Testbericht
+# Auralyn Terminal v1.1.0 Stable – Testbericht
 
-Erstellt: 12. November 2026.
-
-- 714 automatisierte Testfälle: **693 erfolgreich, 21 übersprungen, 0 Fehler**.
-- Die übersprungenen Fälle benötigen eine echte GTK/VTE-Grafikumgebung.
-- Inhaltliche Tests von Bash, Vorschlägen, KI-Fallback, Update-/sudo-Ablauf und Clipboard enthalten.
-- Die grafische End-to-End-Abnahme auf Ubuntu 26.04 sowie echte Online-KI-Antworten sind noch nicht erfolgt.
-- Interne Paketversion: `1:1.0.0`. Das ist eine gültige Debian-Versionsnummer und ermöglicht Updates von zuvor installierten Versionen.
-
-**Stable** ist eine Produktkennzeichnung und ersetzt keine vollständige Prüfung auf Zielsystemen.
+- 4 neue Autostart-Tests erfolgreich; echter GTK-Test mit isoliertem Autostart und simulierter Update-Auslösung erfolgreich.
+- 56 UI-Controller-, 44 Updater- und 27 Bestätigungs-Tests erfolgreich.
+- Vollständiger headless Regressionstest: 721 Tests, 21 übersprungen, 2 bekannte Fehlschläge (Command-Cache und Prozessnamen), keine neuen Fehler.
+- Echte Paketupgrades und vollständiger Ubuntu-Ab-/Anmeldevorgang nicht getestet.
+- Autostart ist im Auslieferungszustand aus. Keine Änderungen an sudoers oder Passwortspeicherung.
+- Der Projektinhaber hat nach der lokalen Installation bestätigt, dass die neue Login-Update-Funktion funktioniert.

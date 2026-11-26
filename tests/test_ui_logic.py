@@ -174,7 +174,7 @@ def load(name, method=None, extra=None):
     return namespace[method or name]
 
 
-SettingsDialog = load('SettingsDialog')
+SettingsDialog = load('SettingsDialog', extra={'login_update': NS(enabled=lambda: False, set_enabled=Mock())})
 Suggestions = load('Suggestions')
 key_handler = load('TerminalPage', '_on_key')
 select_all_handler = load('TerminalPage', 'select_terminal_all')

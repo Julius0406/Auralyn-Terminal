@@ -24,6 +24,7 @@ from .protocol import SessionIPC
 from .settings import DEFAULTS, Settings
 from .terminal_state import is_readline_foreground, suggestion_viewport_row
 from .window_chrome import bind_system_window_controls
+from . import login_update
 from .smart_catalog import get_action
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -727,6 +728,10 @@ class SettingsDialog(Gtk.Dialog):
         manage_updates = Gtk.Button(label="Optionen & Passwort…")
         manage_updates.connect("clicked", lambda *_: window.open_update_settings())
         self._grid_row(grid, 6, "Update-Button", manage_updates)
+        self.login_update_switch = Gtk.Switch(active=login_update.enabled())
+        self.login_update_switch.set_tooltip_text("Beim Ubuntu-Login Auralyn öffnen und APT + Flatpak aktualisieren. Es gelten dieselben Passwort- und Ja-Einstellungen wie beim Update-Button; full-upgrade kann Pakete entfernen.")
+        self.login_update_switch.connect("notify::active", self._toggle_login_update)
+        self._grid_row(grid, 7, "Auto-Update beim Login", self.login_update_switch)
         outer.pack_start(grid, False, False, 0)
         help_note = Gtk.Label(label="Befehl mit Tab markieren → H zeigt eine kurze Erklärung.\nNoch einmal H oder Esc schließt die Erklärung.", xalign=0)
         help_note.set_line_wrap(True)
@@ -736,6 +741,19 @@ class SettingsDialog(Gtk.Dialog):
         note.set_line_wrap(True)
         note.get_style_context().add_class("muted")
         outer.pack_start(note, False, False, 0)
+
+    def _toggle_login_update(self, widget, _):
+        if getattr(self, "_syncing_login_update", False):
+            return
+        try:
+            login_update.set_enabled(widget.get_active())
+        except OSError as exc:
+            self._syncing_login_update = True
+            try:
+                widget.set_active(login_update.enabled())
+            finally:
+                self._syncing_login_update = False
+            self._owner_window.show_error("Autostart konnte nicht geändert werden", str(exc))
 
     @staticmethod
     def _grid_row(grid, row, label, control):
@@ -1165,17 +1183,21 @@ class MainWindow(Gtk.ApplicationWindow):
 
 
 class Application(Gtk.Application):
-    def __init__(self, settings, cwd):
+    def __init__(self, settings, cwd, *, start_login_update=False):
         # Like other terminals, multiple launcher invocations may open windows.
         super().__init__(application_id="de.julius.AuralynTerminal", flags=Gio.ApplicationFlags.NON_UNIQUE)
         self.settings = settings
         self.cwd = cwd
+        self.start_login_update = start_login_update
 
     def do_activate(self):
         Gtk.Settings.get_default().set_property("gtk-application-prefer-dark-theme", True)
         window = MainWindow(self, self.settings, self.cwd)
         window.show_all()
         window.present()
+        if self.start_login_update:
+            self.start_login_update = False
+            window.launch_updates()
 
 
 def main(argv=None):
@@ -1183,12 +1205,15 @@ def main(argv=None):
     parser.add_argument("--version", action="version", version=f"Auralyn Terminal v{__version__} Stable")
     parser.add_argument("--working-directory", metavar="ORDNER", default=str(Path.home()))
     parser.add_argument("--no-suggestions", action="store_true", help="Für diesen Start ohne Live-Vorschläge öffnen")
+    parser.add_argument("--login-update", action="store_true", help="Nur bei aktiviertem Benutzer-Autostart den festen Update-Ablauf öffnen")
     args = parser.parse_args(argv)
+    if args.login_update and (os.geteuid() == 0 or not login_update.enabled()):
+        return 0
     cwd = os.path.abspath(os.path.expanduser(args.working_directory))
     if not os.path.isdir(cwd):
         parser.error(f"Ordner existiert nicht: {cwd}")
     settings = Settings()
     if args.no_suggestions:
         settings.runtime_overrides["suggestions"] = False
-    app = Application(settings, cwd)
+    app = Application(settings, cwd, start_login_update=args.login_update)
     return app.run(["auralyn-terminal"])
