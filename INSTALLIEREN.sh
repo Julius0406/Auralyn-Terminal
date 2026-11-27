@@ -2,11 +2,11 @@
 # Build locally if necessary, then let APT resolve official Ubuntu dependencies.
 set -euo pipefail
 HERE="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-PACKAGE="$HERE/dist/auralyn-terminal_1.1.0_all.deb"
+PACKAGE="$HERE/dist/auralyn-terminal_1.2.0_all.deb"
 if [[ ! -f "$PACKAGE" ]]; then
     /usr/bin/python3 "$HERE/packaging/build_deb.py"
 fi
-printf '\nAuralyn Terminal v1.1.0 Stable installieren\n'
+printf '\nAuralyn Terminal v1.2.0 Stable installieren\n'
 printf 'Dein vorhandenes Terminal und deine .bashrc werden nicht ersetzt.\n\n'
 if (( EUID == 0 )); then
     apt install "$PACKAGE"

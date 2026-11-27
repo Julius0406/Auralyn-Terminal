@@ -6,7 +6,7 @@
 
 **A modern GTK/VTE terminal for Ubuntu 26.04 — made by Julius.**
 
-[![Version](https://img.shields.io/badge/Version-v1.1.0%20Stable-17a398?style=for-the-badge)](https://github.com/Julius0406/Auralyn-Terminal/releases)
+[![Version](https://img.shields.io/badge/Version-v1.2.0%20Stable-17a398?style=for-the-badge)](https://github.com/Julius0406/Auralyn-Terminal/releases)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-26.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3-3776AB?style=for-the-badge&logo=python&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-6874c9?style=for-the-badge)](LICENSE)
@@ -21,17 +21,17 @@
 
 **Auralyn Terminal** is a real Linux Bash terminal with a transparent interface and useful extras: compact live command suggestions, quick explanations, optional AI-powered command research, and a one-click system updater.
 
-**v1.1.0 Stable** adds optional system updates at desktop login and retains GNOME-native window controls and all existing terminal features.
+**v1.2.0 Stable** adds first-class Orbit Global Menu integration with Auralyn-specific menus.
 
-## 🆕 Latest Update — v1.1.0 Stable
+## 🆕 Latest Update — v1.2.0 Stable
 
-*Released November 26, 2026*
+*Released November 27, 2026*
 
-- **Auto-update on login:** Auralyn can open automatically when you sign into Ubuntu and run APT and Flatpak updates.
-- **New settings switch:** Enable or disable login updates; off by default.
-- **Existing update preferences:** Reuses automatic confirmations and optional keyring authentication.
+- **Orbit Global Menu:** Adds Auralyn, Datei, Bearbeiten, Suche, Terminal, Ansicht and Hilfe menus to the GNOME top panel.
+- **Real Auralyn actions:** New/close tab, copy/paste/select all, Smart Search, system update, tab navigation, zoom, settings and quit.
+- **Wayland compatible:** Uses Orbit's shortcut-menu fallback; the optional D-Bus daemon is not required.
 
-[Full changelog](CHANGELOG.md) · [Latest release](https://github.com/Julius0406/Auralyn-Terminal/releases/latest)
+[Orbit integration guide](integrations/orbit-global-menu/README.md) · [Full changelog](CHANGELOG.md) · [Latest release](https://github.com/Julius0406/Auralyn-Terminal/releases/latest)
 
 <!-- Update this section with the newest version, release date and highlights for every release. Keep the full version history in CHANGELOG.md. -->
 
@@ -51,6 +51,7 @@ The **minimize, maximize and close** buttons automatically follow the system’s
 | 🧠 **Optional local AI** | Connect Ollama (for example, Qwen3). Optional web research can help identify commands and check installed tools. |
 | ↻ **One-click updates** | APT and Flatpak updates in a separate tab, with optional keyring-based password handling. |
 | 🔄 **Auto-update on login** | Optional automatic APT/Flatpak updates when signing into the Ubuntu desktop. Off by default. |
+| 🌌 **Orbit Global Menu** | Auralyn-specific global menus in the GNOME top panel, including terminal actions and settings. |
 | ▶️ **Run and kill** | Launch applications by name or force-stop your own processes. |
 | 🎭 **Faceman commands** | `face`, `gondelface`, `luiswiththegondelface` repeatedly print `Faceman is here` until **Ctrl+C**. |
 
@@ -66,19 +67,36 @@ The **minimize, maximize and close** buttons automatically follow the system’s
 | **Ctrl+A** | Jump to the start of the current Bash input line |
 | **Ctrl+C** | Interrupt a running command |
 | **Ctrl+Shift+F** | Open Smart Search |
+| **Ctrl+Shift+T / W** | New / close tab |
+| **Ctrl+Shift+N** | New window |
+| **Ctrl+,** | Open settings |
+| **Ctrl+Shift+U** | Start system update |
+| **Ctrl+Shift+I** | About Auralyn |
+| **Ctrl+Q** | Close window safely |
+| **Ctrl+Page Up / Down** | Previous / next tab |
+| **Ctrl+Shift+Plus / Ctrl+Minus / Ctrl+0** | Zoom in / out / reset |
+| **Ctrl+Space** | Refresh command suggestions |
 
 > ⚠️ Multi-line pastes can run commands immediately, depending on the program receiving the text. Review copied commands first.
+
+## 🌌 Orbit Global Menu integration
+
+If you use Orbit Global Menu, install Auralyn's menu mapping once:
+
+    auralyn-orbit-menu-install
+
+The integration adds application-specific menus to the GNOME top panel and works with Orbit's keyboard-shortcut fallback on Wayland. The optional Orbit D-Bus companion is not required. Auralyn's own shortcuts perform the menu actions.
 
 ## 📦 Install on Ubuntu 26.04
 
 ### Option 1 — Download the `.deb` installer
 
-1. Download **`auralyn-terminal_1.1.0_all.deb`** from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases/tag/v1.1.0).
+1. Download **`auralyn-terminal_1.2.0_all.deb`** from [GitHub Releases](https://github.com/Julius0406/Auralyn-Terminal/releases/tag/v1.2.0).
 2. Save it to your **Downloads** folder.
 3. In your usual Ubuntu terminal, run:
 
 ```bash
-sudo apt install ~/Downloads/auralyn-terminal_1.1.0_all.deb
+sudo apt install ~/Downloads/auralyn-terminal_1.2.0_all.deb
 ```
 
 ### Option 2 — Install from source using Git
@@ -87,7 +105,7 @@ Clone the tagged stable release, build the Debian package locally and install it
 
 ```bash
 sudo apt install git python3 dpkg
-git clone --branch v1.1.0 --depth 1 https://github.com/Julius0406/Auralyn-Terminal.git
+git clone --branch v1.2.0 --depth 1 https://github.com/Julius0406/Auralyn-Terminal.git
 cd Auralyn-Terminal
 bash INSTALLIEREN.sh
 ```
@@ -102,7 +120,7 @@ Launch from the application menu or run:
 auralyn-terminal
 ```
 
-**Do not launch the whole application with `sudo`.** Run administrative commands inside Auralyn only when needed. Existing Auralyn settings are preserved when upgrading. The internal Debian package version is `1:1.1.0` to correctly upgrade previous installed versions.
+**Do not launch the whole application with `sudo`.** Run administrative commands inside Auralyn only when needed. Existing Auralyn settings are preserved when upgrading. The internal Debian package version is `1:1.2.0` to correctly upgrade previous installed versions.
 
 ## 🤖 Optional Ollama AI
 
@@ -144,7 +162,7 @@ Normal package confirmations are accepted by default (you can turn this off in t
 - Local AI and web research are opt-in features.
 - Force-stopping an app can cause data loss from unsaved work.
 - The **stable** label describes the release channel, not a guarantee of zero bugs.
-- **v1.1.0:** 698 of 721 automated tests passed, 21 graphical tests were skipped in the headless run, and 2 previously observed tests failed. The new login-update tests and an isolated GTK test passed. The project owner confirmed the feature works on their Ubuntu desktop.
+- **v1.2.0:** 700 of 723 tests passed, 21 were skipped and 2 failed in existing completion-cache and process-name tests. The Orbit parser, integration tests and GTK shortcut smoke passed. The project owner confirmed the login updater works on Ubuntu; live Orbit resolution also matched the Auralyn application to its custom menu mapping.
 
 ## 👨‍💻 Project
 

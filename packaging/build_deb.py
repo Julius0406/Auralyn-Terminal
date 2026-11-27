@@ -15,8 +15,8 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
-FILE_VERSION = '1.1.0'
-DEB_VERSION = '1:1.1.0'
+FILE_VERSION = '1.2.0'
+DEB_VERSION = '1:1.2.0'
 
 
 def copy_file(source: Path, target: Path, mode=0o644):
@@ -43,6 +43,9 @@ def build(output: Path):
         copy_file(ROOT / 'smart_launcher.py', app / 'smart_launcher.py')
         copy_file(ROOT / 'update_launcher.py', app / 'update_launcher.py')
         copy_file(ROOT / 'update_askpass.py', app / 'update_askpass.py', mode=0o755)
+        for source in sorted((ROOT / 'integrations').rglob('*')):
+            if source.is_file():
+                copy_file(source, app / source.relative_to(ROOT), mode=0o755 if source.name.endswith('.sh') else 0o644)
         copy_file(ROOT / 'assets/auralyn-terminal.svg', root / 'usr/share/icons/hicolor/scalable/apps/auralyn-terminal.svg')
         copy_file(ROOT / 'packaging/de.julius.AuralynTerminal.desktop', root / 'usr/share/applications/de.julius.AuralynTerminal.desktop')
         for filename in ('README.md', 'LICENSE', 'TESTBERICHT.md', 'CHANGELOG.md'):
@@ -55,6 +58,10 @@ def build(output: Path):
         launcher.parent.mkdir(parents=True, exist_ok=True)
         launcher.write_text('#!/bin/sh\nexec /usr/bin/python3 -I /usr/share/auralyn-terminal/launcher.py "$@"\n')
         launcher.chmod(0o755)
+        orbit_launcher = root / 'usr/bin/auralyn-orbit-menu-install'
+        orbit_launcher.parent.mkdir(parents=True, exist_ok=True)
+        orbit_launcher.write_text('#!/bin/sh' + chr(10) + 'exec /bin/bash /usr/share/auralyn-terminal/integrations/orbit-global-menu/install.sh "$@"' + chr(10))
+        orbit_launcher.chmod(0o755)
         meta = root / 'DEBIAN'
         meta.mkdir()
         size = math.ceil(sum(p.stat().st_size for p in root.rglob('*') if p.is_file()) / 1024)

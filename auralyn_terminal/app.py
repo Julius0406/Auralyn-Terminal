@@ -1147,6 +1147,20 @@ class MainWindow(Gtk.ApplicationWindow):
         if ctrl and shift and key == Gdk.KEY_f:
             self.open_smart()
             return True
+        if ctrl and shift and key == Gdk.KEY_u:
+            self.launch_updates()
+            return True
+        if ctrl and shift and key == Gdk.KEY_i:
+            self.about()
+            return True
+        if ctrl and shift and key == Gdk.KEY_n:
+            # Gtk.Application is NON_UNIQUE: activate creates a fresh window.
+            self.get_application().activate()
+            return True
+        if ctrl and not shift and key == Gdk.KEY_q:
+            # Go through Gtk.Window.close so the existing update/job guard runs.
+            self.close()
+            return True
         if ctrl and shift and key == Gdk.KEY_t:
             self.add_tab()
             return True

@@ -1,4 +1,4 @@
-# Auralyn-Programmhilfe v1.1.0 Stable
+# Auralyn-Programmhilfe v1.2.0 Stable
 
 ## Faceman-Kommandos
 
@@ -190,7 +190,7 @@ Auralyn verwendet den normalen Verlauf deiner Bash. Pfeil hoch/ab blättert an d
 
 ## Auralyn-Version anzeigen
 
-Diese Hilfe gehört zu Auralyn Terminal v1.1.0 Stable. Das Info-Symbol oben öffnet „Über Auralyn“ mit der installierten Version. Im Terminal zeigt auralyn-terminal --version ebenfalls die Version.
+Diese Hilfe gehört zu Auralyn Terminal v1.2.0 Stable. Das Info-Symbol oben öffnet „Über Auralyn“ mit der installierten Version. Im Terminal zeigt auralyn-terminal --version ebenfalls die Version.
 
 ## Auralyn selbst aktualisieren
 
@@ -207,3 +207,22 @@ Strg+, = Einstellungen · Strg+Umschalt+F = Smart Search · Strg+Umschalt+T/W = 
 ## Noch nicht eingebaute Funktionen
 
 Diese Version bietet Tabs, aber keinen Split-Screen, keinen Theme-/Farb-Editor und keinen eigenen Hintergrundbild- oder Blur-Schalter. Das Zahnrad zeigt die tatsächlich vorhandenen Einstellungen. Ich erfinde dafür keine zusätzlichen Menüs.
+
+
+## Orbit Global Menu
+
+Auralyn includes an integration for Orbit Global Menu. Install its per-user menu mapping with:
+
+    auralyn-orbit-menu-install
+
+The GNOME top panel then shows Auralyn, Datei, Bearbeiten, Suche, Terminal, Ansicht and Hilfe menus while Auralyn is focused. Menu actions use Auralyn's keyboard shortcuts and work with Orbit's shortcut-menu fallback on Wayland; the optional global-menu D-Bus daemon is not required. The mapping is stored in the user's XDG config directory. Existing custom mappings are backed up before replacement.
+
+| Menü | Aktionen |
+|---|---|
+| Auralyn | Einstellungen, Beenden |
+| Datei | Neues Fenster, Neuer Tab, Tab schließen |
+| Bearbeiten | Alles markieren, Kopieren, Einfügen |
+| Suche | Smart Search öffnen |
+| Terminal | Systemupdate starten, Vorschläge aktualisieren |
+| Ansicht | Vorheriger/Nächster Tab, Zoom |
+| Hilfe | Über Auralyn Terminal |

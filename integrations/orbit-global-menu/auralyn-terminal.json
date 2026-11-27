@@ -1,0 +1,122 @@
+{
+  "format": 1,
+  "app": "auralyn-terminal",
+  "name": "Auralyn Terminal",
+  "identifiers": [
+    "de.julius.auralynterminal.desktop",
+    "de.julius.auralynterminal",
+    "auralyn-terminal",
+    "auralyn terminal"
+  ],
+  "menus": [
+    {
+      "label": "Auralyn",
+      "items": [
+        {
+          "label": "Einstellungen…",
+          "shortcut": "<Ctrl>comma"
+        },
+        {
+          "separator": true
+        },
+        {
+          "label": "Beenden",
+          "shortcut": "<Ctrl>q"
+        }
+      ]
+    },
+    {
+      "label": "Datei",
+      "items": [
+        {
+          "label": "Neues Fenster",
+          "shortcut": "<Ctrl><Shift>n"
+        },
+        {
+          "label": "Neuer Tab",
+          "shortcut": "<Ctrl><Shift>t"
+        },
+        {
+          "label": "Tab schließen",
+          "shortcut": "<Ctrl><Shift>w"
+        }
+      ]
+    },
+    {
+      "label": "Bearbeiten",
+      "items": [
+        {
+          "label": "Alles markieren",
+          "shortcut": "<Ctrl><Shift>a"
+        },
+        {
+          "label": "Kopieren",
+          "shortcut": "<Ctrl><Shift>c"
+        },
+        {
+          "label": "Einfügen",
+          "shortcut": "<Ctrl><Shift>v"
+        }
+      ]
+    },
+    {
+      "label": "Suche",
+      "items": [
+        {
+          "label": "Smart Search öffnen",
+          "shortcut": "<Ctrl><Shift>f"
+        }
+      ]
+    },
+    {
+      "label": "Terminal",
+      "items": [
+        {
+          "label": "Systemupdate starten",
+          "shortcut": "<Ctrl><Shift>u"
+        },
+        {
+          "label": "Vorschläge aktualisieren",
+          "shortcut": "<Ctrl>space"
+        }
+      ]
+    },
+    {
+      "label": "Ansicht",
+      "items": [
+        {
+          "label": "Vorheriger Tab",
+          "shortcut": "<Ctrl>Page_Up"
+        },
+        {
+          "label": "Nächster Tab",
+          "shortcut": "<Ctrl>Page_Down"
+        },
+        {
+          "separator": true
+        },
+        {
+          "label": "Vergrößern",
+          "shortcut": "<Ctrl><Shift>plus"
+        },
+        {
+          "label": "Verkleinern",
+          "shortcut": "<Ctrl>minus"
+        },
+        {
+          "label": "Zoom zurücksetzen",
+          "shortcut": "<Ctrl>0"
+        }
+      ]
+    },
+    {
+      "label": "Hilfe",
+      "items": [
+        {
+          "label": "Über Auralyn Terminal",
+          "shortcut": "<Ctrl><Shift>i"
+        }
+      ]
+    }
+  ]
+}

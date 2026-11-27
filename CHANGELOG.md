@@ -1,3 +1,14 @@
+# Auralyn Terminal v1.2.0 Stable — Changelog
+
+## v1.2.0 — Orbit Global Menu integration
+
+- Add dedicated Auralyn menus to Orbit Global Menu: Auralyn, File, Edit, Search, Terminal, View and Help.
+- Add keyboard actions for New Window, About, System Update and Quit.
+- Include a per-user Orbit shortcut mapping and installer command.
+- Works with Orbit shortcut menus on Wayland; no optional D-Bus companion required.
+
+---
+
 # Auralyn Terminal v1.1.0 Stable — Changelog
 
 ## v1.1.0 — Auto-update on login
